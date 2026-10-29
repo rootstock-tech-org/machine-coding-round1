@@ -23,6 +23,20 @@ finishing every task. A clean, well-tested subset beats a rushed, complete one.
 
 ---
 
+## Steps to complete
+
+- [ ] Set up: `pip install -e ".[dev]"`, then run `pytest -q`. The provided tests fail at first.
+- [ ] Task 1: implement `sign_url` and `verify_url` in `ingestion/signing.py`, so that `pytest -q tests/test_signing.py` passes.
+- [ ] Task 2: implement `RetryPolicy.run` in `ingestion/retry.py`, so that `pytest -q tests/test_retry.py` passes.
+- [ ] Task 3: implement `IngestionService.ingest` in `ingestion/service.py`, so that `pytest -q tests/test_service.py` passes.
+- [ ] Task 4: implement the three clients in `ingestion/clients.py`.
+- [ ] Task 5: add your own tests for timeouts, cancellation, no retry on permanent errors, and HTTP error mapping.
+- [ ] Run end to end: `uvicorn mock_server.app:app --port 8000`, then `python -m ingestion.cli --all`. Expect 30 ok and 1 failed (`vid-404`).
+- [ ] Check `curl -s localhost:8000/_debug/state`: `wrong_checksums` and `files_delivered_more_than_once` should both be empty.
+- [ ] Fill in `NOTES.md` and commit as you go.
+
+---
+
 ## Time & rules
 
 - **Time box: about 3 hours.** Stop when the time is up and write down in
