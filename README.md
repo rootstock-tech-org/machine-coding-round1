@@ -32,6 +32,23 @@ judgement as much as at accuracy.
 
 ---
 
+## Steps to complete
+
+- [ ] Set up: `pip install -e ".[dev]"`, then `pytest -q`. The 2 SDK smoke tests should pass.
+- [ ] Generate the corpus: `python scripts/generate_corpus.py --n 300 --out corpus --answers answers.jsonl`.
+- [ ] Read the `llm_sdk/__init__.py` docstring: limits, errors, billing and output quirks.
+- [ ] Build the pipeline inside `docpipe/`, with `docpipe/__main__.py` providing the `run`, `status` and `export` commands.
+- [ ] Add a rate limiter that covers requests, tokens and concurrency, plus retries with backoff.
+- [ ] Handle long documents by splitting them into chunks and merging the results.
+- [ ] Validate each LLM response, repair malformed output, and normalise values.
+- [ ] Track document state in SQLite so that re-running after `kill -9` finishes only the remaining work.
+- [ ] Skip duplicate content, enforce `--max-cost-usd`, and detect bad files before any LLM call.
+- [ ] Write the tests listed under requirement 8, and get `pytest -q` passing.
+- [ ] Score your run: `python -m docpipe run corpus/ --db state.db`, then `python -m docpipe export --db state.db --out results.jsonl`, then `python scripts/score.py`.
+- [ ] Fill in `DESIGN.md`, including the scale-out section, and commit as you go.
+
+---
+
 ## Time & rules
 
 - **Time box: about 3–4 hours.** Note in `DESIGN.md` what you would do next.
