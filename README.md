@@ -17,6 +17,21 @@ classes, modules and data structures.** We are evaluating:
 
 ---
 
+## Steps to complete
+
+- [ ] Set up: `pip install -e ".[dev]"`, then `pytest -q`. `tests/test_examples.py` fails at first.
+- [ ] Design the domain model and the data structures inside `matching/`. Prices are `Decimal`.
+- [ ] Create `matching/__main__.py`, which reads commands from a file and prints one event per line, in the format given below.
+- [ ] Implement price-time matching, partial fills, market orders, cancel, modify and validation.
+- [ ] Get `pytest -q tests/test_examples.py` passing.
+- [ ] Add the SQLite event log (`--db`) and replay on startup.
+- [ ] Add at least one of `IOC` or `FOK` without rewriting the matching loop.
+- [ ] Write scenario tests, a randomised invariant test and a replay test.
+- [ ] Measure throughput with `python scripts/generate_orders.py --n 100000 > big.jsonl`, then `time python -m matching big.jsonl > /dev/null`.
+- [ ] Fill in `DESIGN.md`, including the complexity table and your throughput, and commit as you go.
+
+---
+
 ## Time & rules
 
 - **Time box: about 3 hours.** Note in `DESIGN.md` what you would do next.
