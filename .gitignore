@@ -6,3 +6,6 @@ __pycache__/
 corpus/
 answers.jsonl
 results.jsonl
+corpus/
+answers.jsonl
+results.jsonl
