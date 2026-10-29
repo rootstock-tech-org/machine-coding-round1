@@ -19,6 +19,21 @@ your code. We are evaluating:
 
 ---
 
+## Steps to complete
+
+- [ ] Set up: `pip install -e ".[dev]"`, then `pytest -q`.
+- [ ] In `jobq/__init__.py`, export `Queue` with `enqueue()` and the `@queue.handler(...)` decorator, matching the fixed API below.
+- [ ] Design the schema and the job states, and make enqueue idempotent.
+- [ ] Implement atomic claiming with leases, heartbeats and a fencing token.
+- [ ] Add retries with backoff, dead-lettering, `run_at` and priority with anti-starvation.
+- [ ] Create `jobq/__main__.py` with the `worker` and `status` commands, including graceful shutdown on SIGTERM.
+- [ ] Write the tests listed under requirement 9, with an injected clock, and get `pytest -q` passing.
+- [ ] Run the stress check: `python -m examples.load --db jobs.db --n 500`, then start two workers, `kill -9` one of them part-way and restart it.
+- [ ] Run `python -m examples.check_audit --db jobs.db`. It must print `RESULT: PASS`.
+- [ ] Fill in `DESIGN.md` and commit as you go.
+
+---
+
 ## Time & rules
 
 - **Time box: about 3 hours.** Note in `DESIGN.md` what you would do next.
