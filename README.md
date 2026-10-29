@@ -18,6 +18,20 @@ SDKs: **you decide the classes, modules and interfaces.** We are evaluating:
 
 ---
 
+## Steps to complete
+
+- [ ] Set up: `pip install -e ".[dev]"`, then `pytest -q`. The 2 vendor smoke tests should pass.
+- [ ] Read `vendors/alpha.py` and `vendors/beta.py` carefully. Their quirks are part of the exercise.
+- [ ] Design the domain model inside `alerts/`: alerts, alert types, the lifecycle and money. No floats.
+- [ ] Write one adapter per vendor that turns its quotes into your internal quote model, plus Alpha → Beta fallback and rejection of stale quotes.
+- [ ] Persist alerts in SQLite: commit the schema as SQL, and use a repository so the domain code never imports `sqlite3`.
+- [ ] Implement `run_once()` and the console and in-memory notification channels.
+- [ ] Make notifications survive a crash between triggering an alert and sending its notification.
+- [ ] Write the tests listed under requirement 5, and get `pytest -q` passing.
+- [ ] Fill in `DESIGN.md` and commit as you go.
+
+---
+
 ## Time & rules
 
 - **Time box: about 3 hours.** Note in `DESIGN.md` what you would do next.
