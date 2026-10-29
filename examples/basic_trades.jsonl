@@ -1,0 +1,6 @@
+{"event": "TRADE", "symbol": "TCS", "buy_id": "b1", "sell_id": "s3", "price": "99.50", "qty": 7}
+{"event": "TRADE", "symbol": "TCS", "buy_id": "b1", "sell_id": "s1", "price": "100.00", "qty": 5}
+{"event": "TRADE", "symbol": "TCS", "buy_id": "b2", "sell_id": "s1", "price": "100.00", "qty": 3}
+{"event": "TRADE", "symbol": "TCS", "buy_id": "b2", "sell_id": "s2", "price": "100.00", "qty": 3}
+{"event": "TRADE", "symbol": "TCS", "buy_id": "b5", "sell_id": "s4", "price": "98.00", "qty": 2}
+{"event": "TRADE", "symbol": "INFY", "buy_id": "b6", "sell_id": "x1", "price": "90.00", "qty": 3}
